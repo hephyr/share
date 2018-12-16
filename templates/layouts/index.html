@@ -1,0 +1,24 @@
+{{define "index"}}
+<html>
+<head>
+    <title>File Share</title>
+    {{template "header"}}
+</head>
+    <body>
+        <h1>Share</h1>
+        <div>
+        <pre>
+        {{range .}}
+            {{if .IsDir}}
+            <a href="{{.Name}}/">{{.Name}}</a>
+            {{else}}
+            <a download href="{{.Name}}">{{.Name}}</a>
+            {{end}}
+        {{end}}
+        </pre>
+        </div>
+    </body>
+    {{template "footer"}}
+</html>
+
+{{end}}
