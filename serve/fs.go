@@ -2,7 +2,6 @@ package serve
 
 import (
 	"errors"
-	"fmt"
 	"io"
 	"net/http"
 	"os"
@@ -153,7 +152,8 @@ func dirList(w http.ResponseWriter, r *http.Request, f File) {
 	//todo render
 	err = templates.RenderTemplate(w, "index", dirs)
 	if err != nil {
-		fmt.Println(err)
+		http.Error(w, err.Error(), http.StatusNotFound)
+		return
 	}
 
 }
