@@ -5,17 +5,21 @@
     {{template "header"}}
 </head>
     <body>
-        <h1>Share</h1>
-        <div>
-        <pre>
+        <div class="ui container">
+            <h1>File Share</h1>
         {{range .}}
             {{if .IsDir}}
-            <a href="{{.Name}}/">{{.Name}}</a>
+            <p>
+                <i class="folder icon"></i>
+                <a href="{{.Name}}/">{{.Name}}</a>
+            </p>
             {{else}}
-            <a download href="{{.Name}}">{{.Name}}</a>
+            <p>
+                <i class="file icon"></i>
+                <a download href="{{.Name}}">{{.Name}}</a>
+            </p>
             {{end}}
         {{end}}
-        </pre>
         </div>
     </body>
     {{template "footer"}}
