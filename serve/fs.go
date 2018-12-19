@@ -2,6 +2,7 @@ package serve
 
 import (
 	"errors"
+	"fmt"
 	"io"
 	"net/http"
 	"os"
@@ -134,7 +135,7 @@ func serveFile(w http.ResponseWriter, r *http.Request, fs FileSystem, name strin
 		dirList(w, r, f)
 		return
 	}
-
+	w.Header().Set("Content-Length", fmt.Sprintf("%d", d.Size()))
 	//download
 	io.Copy(w, f)
 }

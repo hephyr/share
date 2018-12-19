@@ -6,20 +6,24 @@
 </head>
     <body>
         <div class="ui container">
-            <h1>File Share</h1>
-        {{range .}}
-            {{if .IsDir}}
-            <p>
-                <i class="folder icon"></i>
-                <a href="{{.Name}}/">{{.Name}}</a>
-            </p>
-            {{else}}
-            <p>
-                <i class="file icon"></i>
-                <a download href="{{.Name}}">{{.Name}}</a>
-            </p>
-            {{end}}
-        {{end}}
+            <div class="ui list">
+                <h1>File Share</h1>
+                {{range .}}
+                <div class="item">
+                    {{if .IsDir}}
+                        <i class="folder icon"></i>
+                        <div class="content">
+                            <div class="header"><a href="{{.Name}}/">{{.Name}}/</a></div>
+                        </div>
+                    {{else}}
+                        <i class="file icon"></i>
+                        <div class="content">
+                            <div class="header"><a download href="{{.Name}}">{{.Name}}</a></div>
+                        </div>
+                    {{end}}
+                </div>
+                {{end}}
+            </div>
         </div>
     </body>
     {{template "footer"}}
