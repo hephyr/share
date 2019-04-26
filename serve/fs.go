@@ -11,7 +11,7 @@ import (
 	"sort"
 	"strings"
 
-	"share/templates"
+	"github.com/iozephyr/share/templates"
 )
 
 const TimeFormat = "Mon, 02 Jan 2006 15:04:05 GMT"

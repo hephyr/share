@@ -6,7 +6,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"share/serve"
+	rice "github.com/GeertJohan/go.rice"
+	"github.com/iozephyr/share/serve"
 )
 
 var dir string
@@ -27,7 +28,7 @@ func main() {
 		}
 	}
 	http.Handle("/", http.RedirectHandler("/files/", http.StatusMovedPermanently))
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(rice.MustFindBox("static").HTTPBox())))
 	http.Handle("/files/", http.StripPrefix("/files/", serve.FileServer(serve.Dir(dir))))
 	http.ListenAndServe(":80", nil)
 }
